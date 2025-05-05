@@ -3,6 +3,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import Posts from './posts';
 import { getPosts } from '@/lib/api/post';
 import { getComments } from '@/lib/api/comments';
+import { Button } from '@/components/ui/button';
 
 export default async function PostsPage() {
   const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ export default async function PostsPage() {
     // HydrationBoundary is a Client Component, so hydration will happen there.
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Posts />
+      <Button>hi</Button>
     </HydrationBoundary>
   );
 }

@@ -7,5 +7,10 @@ export default function Home() {
     queryKey: [],
     queryFn: () => ['home1', 'home2'],
   });
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <div>
+      {JSON.stringify(data)}
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    </div>
+  );
 }
