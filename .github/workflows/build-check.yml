@@ -16,6 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v2
+        with:
+            version: 10.9.0
+        
       - name: Read Node.js version from .nvmrc
         id: node
         run: echo "version=$(cat .nvmrc)" >> $GITHUB_OUTPUT
