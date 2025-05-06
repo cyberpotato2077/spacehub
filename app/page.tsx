@@ -1,23 +1,27 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { useAuthModal } from './hooks/useAuthModal';
-import { useQuery } from '@tanstack/react-query';
-import { http } from '@/lib/http';
+import { useAuthModal } from '../hooks/useAuthModal';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+import { SiteHeader } from '@/components/site-header';
 
 export default function Home() {
-  const { openAuthModal } = useAuthModal();
-  const { data } = useQuery({
-    queryKey: ['hi'],
-    queryFn: async () => {
-      return http.get('/helth-check');
-    },
-  });
-
   return (
-    <div>
-      <div>{JSON.stringify(data)}</div>
-      <Button onClick={openAuthModal}>로그인</Button>
-    </div>
+    <SidebarProvider
+      style={
+        {
+          '--sidebar-width': 'calc(var(--spacing) * 72)',
+          '--header-height': 'calc(var(--spacing) * 12)',
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">
+          <div className="@container/main flex flex-1 flex-col gap-2">dd</div>
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
