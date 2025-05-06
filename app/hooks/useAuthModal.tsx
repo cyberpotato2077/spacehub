@@ -15,7 +15,7 @@ function AuthModal({ isOpen, closeModal }: { isOpen: boolean; closeModal: VoidFu
         <VisuallyHidden>
           <DialogTitle>로그인/회원가입</DialogTitle>
         </VisuallyHidden>
-        <LoginForm />
+        <LoginForm onSignUpClick={() => alert('hi')} />
       </DialogContent>
     </Dialog>
   );
