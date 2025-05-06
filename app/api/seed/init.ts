@@ -13,7 +13,7 @@ export async function GET() {
       CREATE TABLE IF NOT EXISTS users (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         email TEXT UNIQUE NOT NULL,
-        password_hash TEXT NOT NULL,
+        password_hash TEXT, -- 비밀번호 로그인 시에만 사용
         role TEXT DEFAULT 'user',
         created_at TIMESTAMP DEFAULT NOW()
       );

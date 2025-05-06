@@ -12,10 +12,15 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.13",
+    "@radix-ui/react-label": "^2.1.6",
     "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-visually-hidden": "^1.2.2",
+    "@radix-ui/themes": "^3.2.1",
     "@tailwindcss/postcss": "^4.1.5",
     "@tanstack/react-query": "^5.74.4",
     "@tanstack/react-query-devtools": "^5.74.7",
+    "@use-funnel/next": "^0.0.16",
     "axios": "^1.9.0",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
@@ -31,7 +36,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.2.0",
-    "tailwindcss": "^4.1.5"
+    "tailwindcss": "^4.1.5",
+    "ts-pattern": "^5.7.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

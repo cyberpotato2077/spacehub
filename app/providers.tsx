@@ -5,6 +5,7 @@
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { OverlayProvider } from 'overlay-kit';
+import { Theme } from '@radix-ui/themes';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -41,11 +42,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   return (
-    <OverlayProvider>
-      <QueryClientProvider client={queryClient}>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-right" />
-      </QueryClientProvider>
-    </OverlayProvider>
+    <Theme>
+      <OverlayProvider>
+        <QueryClientProvider client={queryClient}>
+          {children}
+          <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-right" />
+        </QueryClientProvider>
+      </OverlayProvider>
+    </Theme>
   );
 }
