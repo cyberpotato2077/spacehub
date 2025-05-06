@@ -31,7 +31,6 @@ export async function GET() {
     `;
 
     return NextResponse.json({ message: 'Seed complete' });
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   } catch (e: any) {
     console.error(e);
     return NextResponse.json({ error: 'Seed failed', detail: e.message }, { status: 500 });

@@ -13,7 +13,6 @@ export async function GET() {
     `;
 
     return NextResponse.json({ message: 'Tables cleared' });
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   } catch (e: any) {
     console.error(e);
     return NextResponse.json({ error: 'Failed to clear tables', detail: e.message }, { status: 500 });
