@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useController, useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import { signUp } from '@/lib/api/signUp';
 
 export function SignUp({ onBackToSignInClick }: { onBackToSignInClick: VoidFunction }) {
   return <SignUpForm onBackToSignInClick={onBackToSignInClick} />;
@@ -36,9 +38,14 @@ function SignUpForm({
   const passwordController = useController({ control, name: 'password' });
   const passwordConfirmController = useController({ control, name: 'passwordConfirm' });
 
-  const signUp = async (data: SignUp) => {
-    alert(data);
-  };
+  const { mutate } = useMutation({
+    mutationFn: async (data: SignUp) => {
+      try {
+        const foo = await signUp(data);
+        console.log(foo);
+      } catch {}
+    },
+  });
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -48,7 +55,7 @@ function SignUpForm({
           <CardDescription>Enter your information below to create a new account</CardDescription>
         </CardHeader>
         <CardContent>
-          <form id={FORM_ID} onSubmit={handleSubmit(signUp)}>
+          <form id={FORM_ID} onSubmit={handleSubmit((data) => mutate(data))}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
