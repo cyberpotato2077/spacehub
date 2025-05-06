@@ -30,6 +30,10 @@ jobs:
           node-version: ${{ steps.node.outputs.version }}
           cache: 'pnpm'
 
+      - name: Create .env file from secret
+        run: |
+          echo "${{ secrets.ENV }}" > .env
+
       - name: Install pnpm
         run: npm install -g pnpm
 
