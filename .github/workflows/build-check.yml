@@ -34,14 +34,6 @@ jobs:
         run: |
           echo "${{ secrets.ENV }}" > .env
 
-      - name: Create .test
-        run: |
-          echo "${{ secrets.TEST }}" > .test
-
-      - name: Test
-        run: |
-          cat .test
-
       - name: Install pnpm
         run: npm install -g pnpm
 
