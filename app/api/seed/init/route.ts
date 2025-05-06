@@ -1,5 +1,5 @@
 import { sql } from '@/lib/db';
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -22,7 +22,7 @@ export async function GET() {
     // 초기 admin 유저 생성
     const email = 'admin@example.com';
     const password = 'admin1234';
-    const hash = await bcrypt.hash(password, 10);
+    const hash = await bcryptjs.hash(password, 10);
 
     await sql`
       INSERT INTO users (email, password_hash, role)

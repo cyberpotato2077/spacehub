@@ -42,13 +42,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   return (
-    <Theme>
+    <QueryClientProvider client={queryClient}>
       <OverlayProvider>
-        <QueryClientProvider client={queryClient}>
-          {children}
-          <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-right" />
-        </QueryClientProvider>
+        <Theme>{children}</Theme>
+        <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-right" />
       </OverlayProvider>
-    </Theme>
+    </QueryClientProvider>
   );
 }

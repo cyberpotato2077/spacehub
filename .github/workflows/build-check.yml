@@ -30,6 +30,12 @@ jobs:
           node-version: ${{ steps.node.outputs.version }}
           cache: 'pnpm'
 
+      - name: Create .env file from secret
+        run: |
+          echo "POSTGRES_URL=${{ secrets.POSTGRES_URL }}" >> .env
+          echo "SUPABASE_JWT_SECRET=${{ secrets.SUPABASE_JWT_SECRET }}" >> .env
+          
+
       - name: Install pnpm
         run: npm install -g pnpm
 

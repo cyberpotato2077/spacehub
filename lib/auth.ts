@@ -2,7 +2,7 @@ import { invariant } from 'es-toolkit';
 import jwt from 'jsonwebtoken';
 
 const SECRET = (() => {
-  const jwtSecret = process.env.JWT_SECRET;
+  const jwtSecret = process.env.SUPABASE_JWT_SECRET;
   invariant(jwtSecret != null, '시크릿 키가 누락되었습니다.');
   return jwtSecret;
 })();
