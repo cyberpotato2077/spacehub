@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Link } from '@radix-ui/themes';
 import { useController, useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import { signIn } from '@/lib/api/signIn';
 
 export function SignIn({ onSignUpClick }: { onSignUpClick: VoidFunction }) {
   return <SignInForm onSignUpClick={onSignUpClick} />;
@@ -34,9 +36,14 @@ function SignInForm({
   const emailController = useController({ control, name: 'email' });
   const passwordController = useController({ control, name: 'password' });
 
-  const signIn = async (data: SignIn) => {
-    alert(data);
-  };
+  const { mutate } = useMutation({
+    mutationFn: async (data: SignIn) => {
+      try {
+        const foo = await signIn(data);
+        console.log(foo);
+      } catch {}
+    },
+  });
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -46,7 +53,7 @@ function SignInForm({
           <CardDescription>Enter your email below to login to your account</CardDescription>
         </CardHeader>
         <CardContent>
-          <form id={FORM_ID} onSubmit={handleSubmit(signIn)}>
+          <form id={FORM_ID} onSubmit={handleSubmit((data) => mutate(data))}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
