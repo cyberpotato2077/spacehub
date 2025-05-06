@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: '/api', // Next.js API Route와만 통신하도록 설정
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  withCredentials: true,
 });
+
+axiosInstance.interceptors.response.use((response) => response.data);
 
 export const httpClient = {
   get: <T>(url: string, params?: Record<string, any>) => {
