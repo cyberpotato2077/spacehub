@@ -1,5 +1,5 @@
 import { sql } from '@/lib/db';
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import { signToken } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
   }
 
-  const valid = await bcrypt.compare(password, user[0].password_hash);
+  const valid = await bcryptjs.compare(password, user[0].password_hash);
   if (!valid) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
   }
