@@ -1,4 +1,4 @@
-import { LoginForm } from '@/components/login-form';
+import { SignInForm } from '@/components/signin-form';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { overlay } from 'overlay-kit';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -21,7 +21,7 @@ function AuthModal({ isOpen, closeModal }: { isOpen: boolean; closeModal: VoidFu
           <DialogTitle>로그인/회원가입</DialogTitle>
         </VisuallyHidden>
         {match(signState)
-          .with('SIGN_IN', () => <LoginForm onSignUpClick={() => setSignState('SIGN_UP')} />)
+          .with('SIGN_IN', () => <SignInForm onSignUpClick={() => setSignState('SIGN_UP')} />)
           .with('SIGN_UP', () => <SignUpForm onBackToSignInClick={() => setSignState('SIGN_IN')} />)
           .exhaustive()}
       </DialogContent>
