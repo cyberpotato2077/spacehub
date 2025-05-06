@@ -1,6 +1,6 @@
+import { overlay } from 'overlay-kit';
 import { SignInForm } from '@/components/signin-form';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
-import { overlay } from 'overlay-kit';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SignUpForm } from '@/components/signup-form';
 import { useState } from 'react';
@@ -11,7 +11,7 @@ export function useAuthModal() {
   return { openAuthModal };
 }
 
-function AuthModal({ isOpen, closeModal }: { isOpen: boolean; closeModal: VoidFunction }) {
+export function AuthModal({ isOpen, closeModal }: { isOpen: boolean; closeModal: VoidFunction }) {
   const [signState, setSignState] = useState<'SIGN_IN' | 'SIGN_UP'>('SIGN_IN');
 
   return (
