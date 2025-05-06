@@ -1,7 +1,7 @@
-import { httpClient } from '../httpClient';
+import { http } from '../http';
 
 export const signIn = async ({ email, password }: { email: string; password: string }) => {
-  return httpClient.post('/auth/sign-in', {
+  return http.post('/auth/sign-in', {
     email,
     password,
   });

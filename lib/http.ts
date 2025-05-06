@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use((response) => response.data);
 
-export const httpClient = {
+export const http = {
   get: <T>(url: string, params?: Record<string, any>) => {
     return axiosInstance.get<T>(url, { params });
   },

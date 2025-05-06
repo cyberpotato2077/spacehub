@@ -3,14 +3,14 @@
 import { Button } from '@/components/ui/button';
 import { useAuthModal } from './hooks/useAuthModal';
 import { useQuery } from '@tanstack/react-query';
-import { httpClient } from '@/lib/httpClient';
+import { http } from '@/lib/http';
 
 export default function Home() {
   const { openAuthModal } = useAuthModal();
   const { data } = useQuery({
     queryKey: ['hi'],
     queryFn: async () => {
-      return httpClient.get('/helth-check');
+      return http.get('/helth-check');
     },
   });
 
