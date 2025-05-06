@@ -45,7 +45,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <OverlayProvider>
         <Theme>{children}</Theme>
-        <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-right" />
+        <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
       </OverlayProvider>
     </QueryClientProvider>
   );
