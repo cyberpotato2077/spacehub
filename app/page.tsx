@@ -1,16 +1,14 @@
 'use client';
 
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { Button } from '@/components/ui/button';
+import { useAuthModal } from './hooks/useAuthModal';
 
 export default function Home() {
-  const { data } = useSuspenseQuery({
-    queryKey: [],
-    queryFn: () => ['home1', 'home2'],
-  });
+  const { openAuthModal } = useAuthModal();
+
   return (
     <div>
-      {JSON.stringify(data)}
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Button onClick={openAuthModal}>로그인</Button>
     </div>
   );
 }
