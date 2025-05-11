@@ -14,7 +14,7 @@ interface CustomAxiosInstance extends AxiosInstance {
 
 const isServer = typeof window === 'undefined';
 const isProduction = process.env.NODE_ENV === 'production';
-const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+const vercelUrl = process.env.VERCEL_URL != null ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
 const axiosInstance: CustomAxiosInstance = axios.create({
   baseURL: isServer
