@@ -12,8 +12,15 @@ interface CustomAxiosInstance extends AxiosInstance {
   patch<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 }
 
+const isServer = typeof window === 'undefined';
+const isProduction = process.env.NODE_ENV === 'production';
+
 const axiosInstance: CustomAxiosInstance = axios.create({
-  baseURL: '/api', // Next.js API Route와만 통신하도록 설정
+  baseURL: isServer
+    ? isProduction
+      ? `https://${process.env.VERCEL_URL}/api` // Vercel에서 자동 제공되는 배포 URL
+      : 'http://localhost:3000/api'
+    : '/api', // 클라이언트에서는 상대 경로
   withCredentials: true,
 });
 
