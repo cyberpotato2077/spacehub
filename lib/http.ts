@@ -14,11 +14,12 @@ interface CustomAxiosInstance extends AxiosInstance {
 
 const isServer = typeof window === 'undefined';
 const isProduction = process.env.NODE_ENV === 'production';
+const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 
 const axiosInstance: CustomAxiosInstance = axios.create({
   baseURL: isServer
     ? isProduction
-      ? `https://${process.env.VERCEL_URL}/api` // Vercel에서 자동 제공되는 배포 URL
+      ? `${vercelUrl}/api` // Vercel에서 자동 제공되는 배포 URL
       : 'http://localhost:3000/api'
     : '/api', // 클라이언트에서는 상대 경로
   withCredentials: true,
