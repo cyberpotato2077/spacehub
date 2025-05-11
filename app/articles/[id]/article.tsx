@@ -3,11 +3,10 @@
 import { getArticleQueryOptions } from '@/lib/api/getArticle';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { invariant } from 'es-toolkit';
-import { useRouter } from 'next/router';
+import { parseAsString, useQueryState } from 'nuqs';
 
 export default function Article() {
-  const router = useRouter();
-  const { id } = router.query;
+  const [id] = useQueryState('id', parseAsString);
 
   invariant(id != null, 'd');
 
