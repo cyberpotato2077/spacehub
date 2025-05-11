@@ -1,9 +1,8 @@
-// app/posts/page.tsx
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Blogs from './blogs';
 import { getBlogsQueryOptions } from '@/lib/api/getBlogs';
 
-export default async function PostsPage() {
+export default async function BlogsPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(getBlogsQueryOptions({}));

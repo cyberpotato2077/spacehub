@@ -1,4 +1,3 @@
-// app/posts/page.tsx
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Reports from './reports';
 import { getReportsQueryOptions } from '@/lib/api/getReports';
