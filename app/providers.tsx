@@ -6,6 +6,7 @@ import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-quer
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { OverlayProvider } from 'overlay-kit';
 import { Theme } from '@radix-ui/themes';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -43,10 +44,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <OverlayProvider>
-        <Theme>{children}</Theme>
-        <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
-      </OverlayProvider>
+      <NuqsAdapter>
+        <OverlayProvider>
+          <Theme>{children}</Theme>
+          <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
+        </OverlayProvider>
+      </NuqsAdapter>
     </QueryClientProvider>
   );
 }
