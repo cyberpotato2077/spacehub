@@ -1,7 +1,7 @@
 import { SSRSuspense } from '@/components/ssr-suspense';
-import Blog from './blog';
+import Report from './report';
 
-export default async function BlogPage({
+export default async function ReportPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -10,7 +10,7 @@ export default async function BlogPage({
 
   return (
     <SSRSuspense>
-      <Blog id={id} />
+      <Report id={id} />
     </SSRSuspense>
   );
 }
