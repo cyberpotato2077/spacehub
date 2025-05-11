@@ -1,10 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get('id');
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
-  if (!id) {
+  if (id == null) {
     return NextResponse.json({ error: 'Missing id' }, { status: 400 });
   }
 
