@@ -1,6 +1,7 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import Articles from './articles';
 import { getArticlesQueryOptions } from '@/lib/api/getArticles';
+import { SSRSuspense } from '@/components/ssr-suspense';
 
 export default async function ArticlesPage() {
   const queryClient = new QueryClient();
@@ -11,7 +12,9 @@ export default async function ArticlesPage() {
     // Neat! Serialization is now as easy as passing props.
     // HydrationBoundary is a Client Component, so hydration will happen there.
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Articles />
+      <SSRSuspense>
+        <Articles />
+      </SSRSuspense>
     </HydrationBoundary>
   );
 }

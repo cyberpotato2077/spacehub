@@ -1,10 +1,10 @@
 'use client';
 
 import { getReportsQueryOptions } from '@/lib/api/getReports';
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 export default function Reports() {
-  const { data } = useQuery(getReportsQueryOptions({}));
+  const { data } = useSuspenseQuery(getReportsQueryOptions({}));
 
   return <>{JSON.stringify(data)}</>;
 }
