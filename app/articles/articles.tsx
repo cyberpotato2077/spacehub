@@ -1,10 +1,10 @@
 'use client';
 
 import { getArticlesQueryOptions } from '@/lib/api/getArticles';
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 export default function Articles() {
-  const { data } = useQuery(getArticlesQueryOptions({}));
+  const { data } = useSuspenseQuery(getArticlesQueryOptions({}));
 
   return <>{JSON.stringify(data)}</>;
 }
