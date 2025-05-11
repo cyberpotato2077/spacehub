@@ -1,5 +1,6 @@
 'use client';
 
+import { NewsCard } from '@/components/news-card';
 import { Button } from '@/components/ui/button';
 import { getReportsQueryOptions } from '@/lib/api/getReports';
 import { Routes } from '@/lib/routes';
@@ -11,17 +12,23 @@ export default function Reports() {
   const { data } = useSuspenseQuery(getReportsQueryOptions({}));
 
   return (
-    <>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
       {data.results.map((result) => (
-        <div key={result.id}>
-          <Button
-            type="button"
-            onClick={() => router.push(Routes.report({ id: result.id }))}>
-            go
-          </Button>
-          {JSON.stringify(result)}
-        </div>
+        <NewsCard
+          key={result.id}
+          item={{
+            id: result.id,
+            image_url: result.image_url,
+            news_site: result.news_site,
+            published_at: result.published_at,
+            summary: result.summary,
+            title: result.title,
+            updated_at: result.updated_at,
+            url: result.url,
+          }}
+          onClick={() => router.push(Routes.article({ id: result.id }))}
+        />
       ))}
-    </>
+    </div>
   );
 }
