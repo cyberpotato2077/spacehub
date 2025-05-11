@@ -22,7 +22,7 @@ type NewsItem = {
   summary: string;
   published_at: string;
   updated_at: string;
-  featured: boolean;
+  featured?: boolean;
   launches?: Launch[];
   events?: Event[];
 };
