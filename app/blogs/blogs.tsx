@@ -16,7 +16,7 @@ export default function Blogs() {
         <NewsCard
           key={result.id}
           item={result}
-          onClick={() => router.push(Routes.article({ id: result.id }))}
+          onClick={() => router.push(Routes.blog({ id: result.id }))}
         />
       ))}
     </div>

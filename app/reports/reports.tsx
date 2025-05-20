@@ -16,7 +16,7 @@ export default function Reports() {
         <NewsCard
           key={result.id}
           item={result}
-          onClick={() => router.push(Routes.article({ id: result.id }))}
+          onClick={() => router.push(Routes.report({ id: result.id }))}
         />
       ))}
     </div>
