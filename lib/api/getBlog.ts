@@ -1,9 +1,9 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { Blog } from '@/models/blog';
+import type { Post } from '@/models/common';
 
 type GetBlogRequest = { id: number };
-type GetBlogResponse = Blog;
+type GetBlogResponse = Post;
 const getPath = (id: number) => `/features/blogs/${id}`;
 
 /**

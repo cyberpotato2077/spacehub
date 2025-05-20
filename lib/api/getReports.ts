@@ -1,7 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { PaginatedList } from '@/models/common';
-import type { Report } from '@/models/report';
+import type { PaginatedList, Post } from '@/models/common';
 
 export interface GetReportsRequest {
   /**
@@ -121,7 +120,7 @@ export interface GetReportsRequest {
   updated_at_lte?: string; // ISO8601
 }
 
-type GetReportsResponse = PaginatedList<Report>;
+type GetReportsResponse = PaginatedList<Post>;
 
 const path = '/features/reports';
 

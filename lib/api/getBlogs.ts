@@ -1,7 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { PaginatedList } from '@/models/common';
-import type { Blog } from '@/models/blog';
+import type { PaginatedList, Post } from '@/models/common';
 
 interface GetBlogsRequest {
   /**
@@ -145,7 +144,7 @@ interface GetBlogsRequest {
   updated_at_lte?: string; // ISO8601
 }
 
-type GetArticlesResponse = PaginatedList<Blog>;
+type GetArticlesResponse = PaginatedList<Post>;
 
 const path = '/features/blogs';
 

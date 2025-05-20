@@ -1,10 +1,10 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { Article } from '@/models/article';
+import type { Post } from '@/models/common';
 
 type GetArticleRequest = { id: number };
 
-type GetArticleResponse = Article;
+type GetArticleResponse = Post;
 
 const getPath = (id: number) => `/features/articles/${id}`;
 

@@ -1,10 +1,10 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { Report } from '@/models/report';
+import type { Post } from '@/models/common';
 
 type GetReportRequest = { id: number };
 
-type GetReportResponse = Report;
+type GetReportResponse = Post;
 
 const getPath = (id: number) => `/features/reports/${id}`;
 

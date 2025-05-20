@@ -1,7 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { PaginatedList } from '@/models/common';
-import type { Article } from '@/models/article';
+import type { PaginatedList, Post } from '@/models/common';
 
 type GetArticlesRequest = {
   event?: number[]; // Search for documents related to specific event IDs
@@ -36,7 +35,7 @@ type GetArticlesRequest = {
   updated_at_lte?: string; // ISO8601 timestamp (inclusive)
 };
 
-type GetArticlesResponse = PaginatedList<Article>;
+type GetArticlesResponse = PaginatedList<Post>;
 
 const path = '/features/articles';
 

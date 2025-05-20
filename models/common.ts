@@ -5,7 +5,7 @@ export interface PaginatedList<T> {
   results: T[]; // Array of article objects
 }
 
-export type Author = {
+type Author = {
   name: string;
   socials: {
     x: string;
@@ -17,12 +17,27 @@ export type Author = {
   };
 };
 
-export type LaunchType = {
+type LaunchType = {
   launch_id: string;
   provider: string;
 };
 
-export type EventType = {
+type EventType = {
   event_id: number;
   provider: string;
+};
+
+export type Post = {
+  id: number;
+  title: string;
+  authors: Author[];
+  url: string;
+  image_url: string;
+  news_site: string;
+  summary: string;
+  published_at: string;
+  updated_at: string;
+  featured: boolean;
+  launches?: LaunchType[];
+  events?: EventType[];
 };
