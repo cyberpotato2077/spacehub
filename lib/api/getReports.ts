@@ -1,6 +1,7 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
 import type { PaginatedList } from '@/models/common';
+import type { Report } from '@/models/report';
 
 export interface GetReportsRequest {
   /**
@@ -33,7 +34,12 @@ export interface GetReportsRequest {
    * * `updated_at` - Updated at
    * * `-updated_at` - Updated at (descending)
    */
-  ordering?: ('-published_at' | '-updated_at' | 'published_at' | 'updated_at')[];
+  ordering?: (
+    | '-published_at'
+    | '-updated_at'
+    | 'published_at'
+    | 'updated_at'
+  )[];
 
   /**
    * Get all documents published after a given ISO8601 timestamp (excluded).
@@ -114,28 +120,6 @@ export interface GetReportsRequest {
    */
   updated_at_lte?: string; // ISO8601
 }
-
-type Report = {
-  id: number;
-  title: string;
-  authors: {
-    name: string;
-    socials: {
-      x: string;
-      youtube: string;
-      instagram: string;
-      linkedin: string;
-      mastodon: string;
-      bluesky: string;
-    };
-  }[];
-  url: string;
-  image_url: string;
-  news_site: string;
-  summary: string;
-  published_at: string; // ISO8601 형식
-  updated_at: string; // ISO8601 형식
-};
 
 type GetReportsResponse = PaginatedList<Report>;
 

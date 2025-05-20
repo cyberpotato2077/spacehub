@@ -1,10 +1,10 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
+import type { Blog } from '@/models/blog';
 
-type GetBlogRequest = { id: string };
-type GetBlogResponse = { foo: string };
-
-const getPath = (id: string) => `/features/blogs/${id}`;
+type GetBlogRequest = { id: number };
+type GetBlogResponse = Blog;
+const getPath = (id: number) => `/features/blogs/${id}`;
 
 /**
  * @link https://api.spaceflightnewsapi.net/v4/docs/#/blogs/blogs_retrieve

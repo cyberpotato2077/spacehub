@@ -1,14 +1,15 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
+import type { Report } from '@/models/report';
 
-type GetReportRequest = { id: string };
+type GetReportRequest = { id: number };
 
-type GetReportResponse = { foo: string };
+type GetReportResponse = Report;
 
-const getPath = (id: string) => `/features/reports/${id}`;
+const getPath = (id: number) => `/features/reports/${id}`;
 
 /**
- * @link https://api.spaceflightnewsapi.net/v4/docs/#/reports/reports_list
+ * @link https://api.spaceflightnewsapi.net/v4/docs/#/reports/reports_retrieve
  */
 const getReport = (params: GetReportRequest) => {
   return http.get<GetReportResponse>(getPath(params.id), params);
