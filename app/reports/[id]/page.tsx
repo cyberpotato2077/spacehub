@@ -4,7 +4,7 @@ import Report from './report';
 export default async function ReportPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: number }>;
 }) {
   const { id } = await params;
 

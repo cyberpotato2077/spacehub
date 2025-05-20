@@ -2,36 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CalendarIcon } from 'lucide-react';
 import Image from 'next/image';
-
-type Launch = {
-  id: string;
-  provider: string;
-};
-
-type Event = {
-  id: number;
-  provider: string;
-};
-
-type NewsItem = {
-  id: number;
-  title: string;
-  url: string;
-  image_url: string;
-  news_site: string;
-  summary: string;
-  published_at: string;
-  updated_at: string;
-  featured?: boolean;
-  launches?: Launch[];
-  events?: Event[];
-};
+import type { Post } from '@/models/common';
 
 export function NewsCard({
   item,
   onClick,
 }: {
-  item: NewsItem;
+  item: Post;
   onClick: VoidFunction;
 }) {
   return (
