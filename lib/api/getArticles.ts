@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { PaginatedList } from '@/models/common';
+import type { PaginatedList, Post } from '@/models/common';
 
 type GetArticlesRequest = {
   event?: number[]; // Search for documents related to specific event IDs
@@ -12,7 +12,12 @@ type GetArticlesRequest = {
   news_site?: string; // Comma-separated list of news_site names (include)
   news_site_exclude?: string; // Comma-separated list of news_site names (exclude)
   offset?: number; // Index offset for pagination
-  ordering?: ('published_at' | '-published_at' | 'updated_at' | '-updated_at')[]; // Ordering options
+  ordering?: (
+    | 'published_at'
+    | '-published_at'
+    | 'updated_at'
+    | '-updated_at'
+  )[]; // Ordering options
   published_at_gt?: string; // ISO8601 timestamp (exclusive)
   published_at_gte?: string; // ISO8601 timestamp (inclusive)
   published_at_lt?: string; // ISO8601 timestamp (exclusive)
@@ -30,27 +35,7 @@ type GetArticlesRequest = {
   updated_at_lte?: string; // ISO8601 timestamp (inclusive)
 };
 
-type Article = {
-  id: number;
-  title: string;
-  url: string;
-  image_url: string;
-  news_site: string;
-  summary: string;
-  published_at: string; // ISO8601
-  updated_at: string; // ISO8601
-  featured: boolean;
-  launches: {
-    id: string;
-    provider: string;
-  }[];
-  events: {
-    id: number;
-    provider: string;
-  }[];
-};
-
-type GetArticlesResponse = PaginatedList<Article>;
+type GetArticlesResponse = PaginatedList<Post>;
 
 const path = '/features/articles';
 

@@ -15,19 +15,7 @@ export default function Articles() {
       {data.results.map((result) => (
         <NewsCard
           key={result.id}
-          item={{
-            events: result.events,
-            featured: result.featured,
-            id: result.id,
-            image_url: result.image_url,
-            launches: result.launches,
-            news_site: result.news_site,
-            published_at: result.published_at,
-            summary: result.summary,
-            title: result.title,
-            updated_at: result.updated_at,
-            url: result.url,
-          }}
+          item={result}
           onClick={() => router.push(Routes.article({ id: result.id }))}
         />
       ))}

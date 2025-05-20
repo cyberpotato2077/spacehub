@@ -1,8 +1,7 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { PaginatedList } from '@/models/common';
+import type { PaginatedList, Post } from '@/models/common';
 
-// Request Type for GET /v4/blogs/
 interface GetBlogsRequest {
   /**
    * Search for all documents related to a specific event using its
@@ -61,7 +60,9 @@ interface GetBlogsRequest {
    * * `updated_at` - Updated at
    * * `-updated_at` - Updated at (descending)
    */
-  ordering?: Array<'published_at' | '-published_at' | 'updated_at' | '-updated_at'>; // explode: false, style: form
+  ordering?: Array<
+    'published_at' | '-published_at' | 'updated_at' | '-updated_at'
+  >; // explode: false, style: form
 
   /**
    * Get all documents published after a given ISO8601 timestamp (excluded).
@@ -143,51 +144,7 @@ interface GetBlogsRequest {
   updated_at_lte?: string; // ISO8601
 }
 
-// Author의 소셜 정보
-export interface AuthorSocials {
-  x: string;
-  youtube: string;
-  instagram: string;
-  linkedin: string;
-  mastodon: string;
-  bluesky: string;
-}
-
-// 블로그 작성자 정보
-export interface Author {
-  name: string;
-  socials: AuthorSocials;
-}
-
-// 관련된 발사(Launch) 정보
-export interface Launch {
-  launch_id: string; // UUID
-  provider: string;
-}
-
-// 관련된 이벤트(Event) 정보
-export interface Event {
-  event_id: number;
-  provider: string;
-}
-
-// 단일 Blog 객체
-export interface Blog {
-  id: number;
-  title: string;
-  authors: Author[];
-  url: string;
-  image_url: string;
-  news_site: string;
-  summary: string;
-  published_at: string; // ISO8601 date-time
-  updated_at: string; // ISO8601 date-time
-  featured: boolean;
-  launches: Launch[];
-  events: Event[];
-}
-
-type GetArticlesResponse = PaginatedList<Blog>;
+type GetArticlesResponse = PaginatedList<Post>;
 
 const path = '/features/blogs';
 

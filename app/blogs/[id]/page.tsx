@@ -4,7 +4,7 @@ import Blog from './blog';
 export default async function BlogPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: number }>;
 }) {
   const { id } = await params;
 

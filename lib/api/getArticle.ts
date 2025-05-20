@@ -1,17 +1,15 @@
 import { queryOptions } from '@tanstack/react-query';
 import { http } from '../http';
-import type { PaginatedList } from '@/models/common';
+import type { Post } from '@/models/common';
 
-type GetArticleRequest = { id: string };
+type GetArticleRequest = { id: number };
 
-type GetArticleResponse = {
-  foo: string;
-};
+type GetArticleResponse = Post;
 
-const getPath = (id: string) => `/features/articles/${id}`;
+const getPath = (id: number) => `/features/articles/${id}`;
 
 /**
- * @link https://api.spaceflightnewsapi.net/v4/docs/#/articles/articles_list
+ * @link https://api.spaceflightnewsapi.net/v4/docs/#/articles/articles_retrieve
  */
 const getArticle = (params: GetArticleRequest) => {
   return http.get<GetArticleResponse>(getPath(params.id), params);

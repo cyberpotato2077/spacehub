@@ -1,7 +1,6 @@
 'use client';
 
 import { NewsCard } from '@/components/news-card';
-import { Button } from '@/components/ui/button';
 import { getBlogsQueryOptions } from '@/lib/api/getBlogs';
 import { Routes } from '@/lib/routes';
 import { useSuspenseQuery } from '@tanstack/react-query';
@@ -16,18 +15,8 @@ export default function Blogs() {
       {data.results.map((result) => (
         <NewsCard
           key={result.id}
-          item={{
-            featured: result.featured,
-            id: result.id,
-            image_url: result.image_url,
-            news_site: result.news_site,
-            published_at: result.published_at,
-            summary: result.summary,
-            title: result.title,
-            updated_at: result.updated_at,
-            url: result.url,
-          }}
-          onClick={() => router.push(Routes.article({ id: result.id }))}
+          item={result}
+          onClick={() => router.push(Routes.blog({ id: result.id }))}
         />
       ))}
     </div>
