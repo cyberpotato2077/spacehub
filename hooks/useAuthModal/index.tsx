@@ -21,7 +21,7 @@ export function AuthModal({ isOpen, closeModal }: { isOpen: boolean; closeModal:
           <DialogTitle>로그인/회원가입</DialogTitle>
         </VisuallyHidden>
         {match(signState)
-          .with('SIGN_IN', () => <SignIn onSignUpClick={() => setSignState('SIGN_UP')} />)
+          .with('SIGN_IN', () => <SignIn onSignUpClick={() => setSignState('SIGN_UP')} closeModal={closeModal} />)
           .with('SIGN_UP', () => <SignUp onBackToSignInClick={() => setSignState('SIGN_IN')} />)
           .exhaustive()}
       </DialogContent>

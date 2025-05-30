@@ -8,8 +8,8 @@ import { useController, useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { signIn } from '@/lib/api/signIn';
 
-export function SignIn({ onSignUpClick }: { onSignUpClick: VoidFunction }) {
-  return <SignInForm onSignUpClick={onSignUpClick} />;
+export function SignIn({ onSignUpClick, closeModal }: { onSignUpClick: VoidFunction; closeModal: VoidFunction }) {
+  return <SignInForm onSignUpClick={onSignUpClick} closeModal={closeModal} />;
 }
 
 const FORM_ID = 'sign-in-form';
@@ -22,9 +22,11 @@ interface SignIn {
 function SignInForm({
   className,
   onSignUpClick,
+  closeModal,
   ...props
 }: React.ComponentProps<'div'> & {
   onSignUpClick: VoidFunction;
+  closeModal: VoidFunction;
 }) {
   const { control, handleSubmit } = useForm<SignIn>({
     defaultValues: {
@@ -36,12 +38,16 @@ function SignInForm({
   const emailController = useController({ control, name: 'email' });
   const passwordController = useController({ control, name: 'password' });
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (data: SignIn) => {
       try {
         const foo = await signIn(data);
         console.log(foo);
-      } catch {}
+        closeModal();
+      } catch (e) {
+        console.error(e);
+        alert('로그인에 실패했습니다.');
+      }
     },
   });
 
@@ -82,8 +88,8 @@ function SignInForm({
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full" form={FORM_ID}>
-                  Login
+                <Button type="submit" className="w-full" form={FORM_ID} disabled={isPending}>
+                  {isPending ? 'Login...' : 'Login'}
                 </Button>
                 {/* <Button variant="outline" className="w-full">
                     Login with Google
